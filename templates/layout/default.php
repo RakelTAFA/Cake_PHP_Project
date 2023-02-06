@@ -23,28 +23,23 @@ $cakeDescription = 'TP3_CakePHP';
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         <?= $cakeDescription ?>:
-        <?= $this->fetch('Admin To-do list') ?>
+        <?= $this->fetch('title') ?>
     </title>
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
 
-    <?= $this->Html->css(['style', '/js/bootstrap/css/bootstrap.min.css', '/js/font-awesome/css/font-awesome.css']) ?>
-
+    <?= $this->Html->css(['style','/js/bootstrap/css/bootstrap.min','/js/font-awesome/css/font-awesome','/js/font-awesome/css/font-awesome.min']) ?>
+    <?= $this->Html->script(['common-scripts','bootstrap/js/bootstrap.min','jquery/jquery.min'])?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <?= $this->element("front/header") ?>
-    <?= $this->element("front/nav_menu") ?>
-    <main class="main">
-        <?= $this->Flash->render() ?>
-        <?= $this->fetch('content') ?>
-    </main>
-
-    <?= $this->element("front/footer") ?>
-
-    <?= $this->Html->script(['/js/jquery/jquery.min.js','lib/bootstrap/js/bootstrap.min.js','js/common-scripts.js']) ?>
+    <?= $this->element("front/header");?>
+    <?= $this->element("front/nav_menu");?>
+    <?= $this->Flash->render();?>
+    <?= $this->fetch('content');?>
+    <?= $this->element("front/footer");?>
 </body>
 </html>
