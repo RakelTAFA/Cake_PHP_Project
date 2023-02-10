@@ -19,18 +19,11 @@
         echo ($this->Form->create());
         echo('<h2 class="form-login-heading">Connexion</h2>');
         echo('<div class="login-wrap">');
-        echo($this->Form->control('email', ['required' => true]));
-        echo($this->Form->control('password', ['required' => true]));
-
-        echo($form->open(["class"=>"form-login", "action"=>"/login"]));
-            echo('<h2 class="form-login-heading">Connexion</h2>');
-            echo('<div class="login-wrap">');
-            echo($form->input("name",["title"=>"Votre nom","class"=>"form-control","placeholder"=>"Nom d'utilisateur"]));
-            echo($form->input("password",["type"=>"password","class"=>"form-control","title"=>"Mot de passe","placeholder"=>"Mot de passe"]));
-
-            echo($form->button("Connexion",["class"=>"btn btn-theme btn-block"]));
-            echo('</div>');
-            echo('</form>');
+        echo($this->Form->control('name', ['required' => true]));
+        echo($this->Form->control('password', ['required' => true, 'type' => 'password']));
+        echo($this->Form->submit(('Se Connecter')));
+        echo($this->Form->end());
+        echo('</div>');
         ?>
     </div>
   </div>

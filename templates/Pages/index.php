@@ -17,8 +17,22 @@
                             </ul>
                         </div>
                         <div class=" add-task-row">
-                            <a class="btn btn-success btn-sm pull-left" href="form-edit">Ajouter un nouveau ticket</a>
-                            <a class="btn btn-default btn-sm pull-right" href="todo-list">Voir tous les tickets</a>
+                            <?php
+                            echo($this->Html->link(
+                                'Ajouter un nouveau ticket',[
+                                    'controller'=>'Tickets','action' =>'add'
+                                ],[
+                                    'class' => 'btn btn-success btn-sm pull-left'
+                                ]));
+                            ?>
+                            <?php
+                            echo($this->Html->link(
+                                'Voir tous les tickets',[
+                                'controller'=>'Tickets','action' =>'listing'
+                            ],[
+                                'class' => 'btn btn-default btn-sm pull-right'
+                            ]));
+                            ?>
                         </div>
                     </div>
                 </section>
