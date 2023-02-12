@@ -51,10 +51,10 @@ return static function (RouteBuilder $routes) {
          * to use (in this case, templates/Pages/index.php)...
          */
         $builder->connect('/', ['controller' => 'Pages', 'action' => 'index']);
-        //$builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
-        //$builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
-        //$builder->connect('/listing', ['controller' => 'Tickets', 'action' => 'listing']);
-        //$builder->connect('/edit', ['controller' => 'Tickets', 'action' => 'edit']);
+        $builder->connect('/users/login', ['controller' => 'Users', 'action' => 'login']);
+        $builder->connect('/users/logout', ['controller' => 'Users', 'action' => 'logout']);
+        $builder->connect('/tickets/listing', ['controller' => 'Tickets', 'action' => 'listing']);
+        $builder->connect('/tickets/add', ['controller' => 'Tickets', 'action' => 'add']);
 
         /*
          * Connect catchall routes for all controllers.
