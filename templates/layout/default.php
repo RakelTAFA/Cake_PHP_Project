@@ -14,7 +14,7 @@
  * @var \App\View\AppView $this
  */
 
-$cakeDescription = 'TP3_CakePHP';
+$cakeDescription = 'Cake_PHP';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
