@@ -1,29 +1,30 @@
 <?php
-
-if (!isset($_SESSION['user'])) {
-    header('Location: /login');
-    exit();
-}
+$cakeDescription = 'Ticket List';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Tickets list</title>
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet">
+    <?= $this->Html->charset() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        <?= $cakeDescription ?>:
+    </title>
+    <?= $this->Html->meta('icon') ?>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+    <?= $this->Html->css(['style','/js/bootstrap/css/bootstrap.min','/js/font-awesome/css/font-awesome','/js/font-awesome/css/font-awesome.min']) ?>
+    <?= $this->Html->script(['common-scripts','bootstrap/js/bootstrap.min','jquery/jquery.min'])?>
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 </head>
 
 <body>
   <section id="container">
-    <?php
-    include_once __DIR__ . '/modules/header.php';
-    include_once __DIR__ . '/modules/nav_menu.php';
-    ?>
-    
+      <?= $this->element("front/header");?>
+      <?= $this->element("front/nav_menu");?>
+
     <!--main content start-->
     <section id="main-content">
       <section class="wrapper">
@@ -40,8 +41,9 @@ if (!isset($_SESSION['user'])) {
               <div class="panel-body">
                 <div class="task-content">
                   <ul class="task-list">
+                      <!--
                       <?php
-                      /** @var Database $db */
+                      /*
                       $tickets = $db->read("tickets",["conditions"=>[
                               "user_id"=>$_SESSION['user']['id'],
                       ],
@@ -49,22 +51,25 @@ if (!isset($_SESSION['user'])) {
                           "order"=>["id DESC"]
                       ]);
                       foreach ($tickets as $ticket) :
+                      */
                         ?>
-                          <li class="tooltips" title="<?= $ticket['description'] ?>">
+                          <li class="tooltips" title="<?php/* $ticket['description'] */?>">
                             <div class="task-title">
-                                <span class="task-title-sp <?= ($ticket['done']?'done':'') ?>"><?= $ticket['title'] ?></span>
-                                <span class="badge <?= ($ticket['level'] <= 4 ? 'bg-theme' : 'bg-warning') ?>"><?= $ticket['level'] ?></span>
+                                <span class="task-title-sp <?php /*($ticket['done']?'done':'') ?>"><?= $ticket['title']*/ ?></span>
+                                <span class="badge <?php /*($ticket['level'] <= 4 ? 'bg-theme' : 'bg-warning') ?>"><?= $ticket['level'] */?></span>
                                 <div class="pull-right hidden-phone">
                                     <?php
+                                    /*
                                     if ($ticket['done']):
+                                    */
                                     ?>
                                         <a href="#" class="btn btn-warning btn-xs"><i class=" fa fa-close"></i></a>
                                     <?php
-                                    else:
+                                    //else:
                                     ?>
                                         <a href="#" class="btn btn-success btn-xs"><i class=" fa fa-check"></i></a>
                                     <?php
-                                    endif;
+                                    //endif;
                                     ?>
                                     <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
                                     <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
@@ -72,8 +77,9 @@ if (!isset($_SESSION['user'])) {
                             </div>
                           </li>
                       <?php
-                      endforeach;
+                      //endforeach;
                       ?>
+                      -->
                   </ul>
                 </div>
                 <div class=" add-task-row">
@@ -84,24 +90,15 @@ if (!isset($_SESSION['user'])) {
           </div>
           <!-- /col-md-12-->
         </div>
-        
+
       </section>
       <!-- /wrapper -->
     </section>
     <!--main content end-->
-
-
-    <?php
-    include_once __DIR__ . '/modules/footer.php';
-    ?>
+      <?= $this->element("front/footer");?>
 
   </section>
-  <script src="lib/jquery/jquery.min.js"></script>
 
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
-  
-  <script src="lib/common-scripts.js"></script>  
-  
 </body>
 
 </html>

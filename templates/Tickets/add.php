@@ -1,29 +1,30 @@
 <?php
-
-if (!isset($_SESSION['user'])) {
-  header('Location: /login');
-  exit();
-}
+$cakeDescription = 'Add Ticket';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Admin Task list</title>
-  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet">
+    <?= $this->Html->charset() ?>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        <?= $cakeDescription ?>:
+    </title>
+    <?= $this->Html->meta('icon') ?>
+
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
+
+    <?= $this->Html->css(['style','/js/bootstrap/css/bootstrap.min','/js/font-awesome/css/font-awesome','/js/font-awesome/css/font-awesome.min']) ?>
+    <?= $this->Html->script(['common-scripts','bootstrap/js/bootstrap.min','jquery/jquery.min'])?>
+    <?= $this->fetch('meta') ?>
+    <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 </head>
 
 <body>
   <section id="container">
-    <?php
-    include_once __DIR__ . '/modules/header.php';
-    include_once __DIR__ . '/modules/nav_menu.php';
-    ?>
-    
+      <?= $this->element("front/header");?>
+      <?= $this->element("front/nav_menu");?>
+
     <section id="main-content">
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Tickets list</h3>
@@ -79,22 +80,16 @@ if (!isset($_SESSION['user'])) {
             </section>
           </div>
         </div>
-        
+
       </section>
     </section>
     <!--main content end-->
 
-    <?php
-    include_once __DIR__ . '/modules/footer.php';
-    ?>
+      <?= $this->element("front/footer");?>
+
 
   </section>
-  <script src="jquery/jquery.min.js"></script>
 
-  <script src="bootstrap/js/bootstrap.min.js"></script>
-  
-  <script src="common-scripts.js"></script>  
-  
 </body>
 
 </html>

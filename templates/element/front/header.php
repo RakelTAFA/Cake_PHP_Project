@@ -4,7 +4,7 @@
     </div>
     <?= $this->Html->link(
         '<b>AD<span>MIN</span></b>',
-        ['controller' => 'Tickets', 'action' => 'index'],
+        ['controller' => 'Pages', 'action' => 'index'],
         ['class' => 'logo', 'escape' => false]
     );
     ?>
