@@ -50,11 +50,11 @@ return static function (RouteBuilder $routes) {
          * its action called 'display', and we pass a param to select the view file
          * to use (in this case, templates/Pages/index.php)...
          */
-        $builder->connect('/cake_php/', ['controller' => 'Tickets', 'action' => 'index']);
-        $builder->connect('/cake_php/users/login', ['controller' => 'Users', 'action' => 'login']);
-        $builder->connect('/cake_php/users/logout', ['controller' => 'Users', 'action' => 'logout']);
-        $builder->connect('/cake_php/tickets/listing', ['controller' => 'Tickets', 'action' => 'listing']);
-        $builder->connect('/cake_php/tickets/add', ['controller' => 'Tickets', 'action' => 'add']);
+        $builder->connect('/', ['controller' => 'Tickets', 'action' => 'index']);
+        $builder->connect('/login', ['controller' => 'Users', 'action' => 'login']);
+        $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
+        $builder->connect('/listing', ['controller' => 'Tickets', 'action' => 'listing']);
+        $builder->connect('/add', ['controller' => 'Tickets', 'action' => 'add']);
 
         /*
          * Connect catchall routes for all controllers.
