@@ -4,6 +4,9 @@ namespace App\Controller;
 
 class TicketsController extends AppController
 {
+    public function index(){
+
+    }
     public function listing(){
 
     }

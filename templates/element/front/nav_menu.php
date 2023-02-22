@@ -13,7 +13,7 @@
                 <?php
                 echo($this->Html->link(
                     'Tableau de bord',[
-                    'controller'=>'Pages','action' =>'index'
+                    'controller'=>'Tickets','action' =>'index'
                 ],[
                     'class' => 'index'
                 ]));

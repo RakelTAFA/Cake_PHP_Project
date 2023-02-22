@@ -23,16 +23,14 @@ $cakeDescription = 'Login';
   <div id="login-page">
     <div class="container">
         <?php
-        /** @var Form $form */
-
         use Cake\Form\Form;
 
-        echo ($this->Form->create());
+        echo ($this->Form->create(null,["class"=>"form-login"]));
         echo('<h2 class="form-login-heading">Connexion</h2>');
         echo('<div class="login-wrap">');
-        echo($this->Form->control('name', ['required' => true]));
-        echo($this->Form->control('password', ['required' => true, 'type' => 'password']));
-        echo($this->Form->submit(('Se Connecter')));
+        echo($this->Form->control('name', ["placeholder" => "Nom d'utilisateur","id" => "nameInput",'class' => 'form-control','required' => true]));
+        echo($this->Form->control('password', ["id" => "passwordInput",'class' => 'form-control','required' => true, 'type' => 'password']));
+        echo($this->Form->submit('Se Connecter',["class" => "btn btn-theme btn-block"]));
         echo($this->Form->end());
         echo('</div>');
         ?>
