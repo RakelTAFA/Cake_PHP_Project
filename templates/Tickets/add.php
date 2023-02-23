@@ -1,31 +1,4 @@
-<?php
-$cakeDescription = 'Add Ticket';
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        <?= $cakeDescription ?>:
-    </title>
-    <?= $this->Html->meta('icon') ?>
-
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-
-    <?= $this->Html->css(['style','/js/bootstrap/css/bootstrap.min','/js/font-awesome/css/font-awesome','/js/font-awesome/css/font-awesome.min']) ?>
-    <?= $this->Html->script(['common-scripts','bootstrap/js/bootstrap.min','jquery/jquery.min'])?>
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
-</head>
-
-<body>
-  <section id="container">
-      <?= $this->element("front/header");?>
-      <?= $this->element("front/nav_menu");?>
-
-    <section id="main-content">
+<section id="main-content">
       <section class="wrapper">
         <h3><i class="fa fa-angle-right"></i> Tickets list</h3>
         <div class="row mt">
@@ -40,41 +13,67 @@ $cakeDescription = 'Add Ticket';
               <div class="panel-body">
                 <div class="task-content">
 
-                <form class="form-horizontal style-form" action="/traitement-form-add-ticket" method="post">
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label" for="inputTitle">Titre du ticket</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputTitle" name="title">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label" for="inputContent">Description complète du ticket</label>
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="inputContent" name="description"></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 col-sm-2 control-label" for="inputSelect">Niveau d'urgence</label>
-                      <div class="col-sm-10">
-                        <select id="inputSelect" class="form-control" name="level">
-                          <option value="0">0</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
-                          <option value="4">4</option>
-                          <option value="5">5</option>
-                          <option value="6">6</option>
-                          <option value="7">7</option>
-                          <option value="8">8</option>
-                          <option value="9">9</option>
-                          <option value="10">10</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="pull-right">
-                      <button type="submit" class="btn btn-primary">Enregistrer</button>
-                    </div>
-                  </form>
+                    <?php
+                    /** @var Form $form */
+                    use Cake\Form\Form;
+
+                    echo($this->Form->create($ticket, [
+                        'class' => 'form-horizontal style-form'
+                    ]));
+
+                    // Title
+                    echo("<div class='form-group'>");
+                    echo($this->Form->control('title',
+                        ['class' => 'col-sm-2 col-sm-2 control-label',
+                            'label' => 'Titre du ticket']));
+                    echo("<div class='col-sm-10'>");
+                    //echo($this->Form->control('inputTitle', ['type' => 'text',
+                    //    'required' => 'true']));
+                    echo("</div>");
+                    echo("</div>");
+
+                    // Description
+                    echo("<div class='form-group'>");
+                    echo($this->Form->control('description',
+                        ['class' => 'col-sm-2 col-sm-2 control-label',
+                            'label' => 'Description complète du ticket']));
+                    echo("<div class='col-sm-10'>");
+                    //echo($this->Form->control('inputContent', ['type' => 'textarea',
+                    //    'required' => 'true']));
+                    echo("</div>");
+                    echo("</div>");
+
+                    // Urgency
+                    echo("<div class='form-group'>");
+                    echo($this->Form->control('urgency',
+                        ['class' => 'col-sm-2 col-sm-2 control-label',
+                            'label' => "Niveau d'urgence"]));
+                    /*
+                    echo("<div class='col-sm-10'>");
+                    echo("<select id='inputSelect' class='form-control' name='level'>");
+                    echo("<option value='0'>0</option>");
+                    echo("<option value='1'>1</option>");
+                    echo("<option value='2'>2</option>");
+                    echo("<option value='3'>3</option>");
+                    echo("<option value='4'>4</option>");
+                    echo("<option value='5'>5</option>");
+                    echo("<option value='6'>6</option>");
+                    echo("<option value='7'>7</option>");
+                    echo("<option value='8'>8</option>");
+                    echo("<option value='9'>9</option>");
+                    echo("<option value='10'>10</option>");
+                    echo("</select>");
+                    echo("</div>");
+                    echo("</div>");
+                    */
+
+                    // Button
+                    echo("<div class='pull-right'>");
+                    echo($this->Form->button('Enregistrer', ['type' => 'submit', 'class' => 'btn btn-primary']));
+                    echo("</div>");
+
+                    echo($this->Form->end());
+                    ?>
                 </div>
               </div>
             </section>
