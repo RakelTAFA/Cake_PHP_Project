@@ -12,9 +12,30 @@ class TicketsController extends AppController
         $tickets = $this->Tickets->find('all');
         $this->set(compact('tickets'));
     }
-    public function edit(){
+    public function edit($id)
+    {
+        // Find the ticket with the given ID
+        $ticket = $this->Tickets->get($id);
 
+        // Check if the request is a POST request
+        if ($this->request->is(['post', 'put'])) {
+
+            // Patch the ticket entity with the request data
+            $this->Tickets->patchEntity($ticket, $this->request->getData());
+
+            // Save the changes to the ticket
+            if ($this->Tickets->save($ticket)) {
+                $this->Flash->success(__('The ticket has been updated.'));
+                return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('Unable to update the ticket.'));
+            }
+        }
+
+        // Pass the ticket data to the view
+        $this->set(compact('ticket'));
     }
+
     public function add(){
         $ticket = $this->Tickets->newEmptyEntity();
 

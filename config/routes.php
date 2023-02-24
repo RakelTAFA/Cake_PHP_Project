@@ -55,6 +55,7 @@ return static function (RouteBuilder $routes) {
         $builder->connect('/logout', ['controller' => 'Users', 'action' => 'logout']);
         $builder->connect('/listing', ['controller' => 'Tickets', 'action' => 'listing']);
         $builder->connect('/add', ['controller' => 'Tickets', 'action' => 'add']);
+        $builder->connect('/edit/:id', ['controller' => 'Tickets', 'action' => 'edit'], ['pass' => ['id']]);
 
         /*
          * Connect catchall routes for all controllers.

@@ -75,13 +75,3 @@
 
       </section>
     </section>
-    <!--main content end-->
-
-      <?= $this->element("front/footer");?>
-
-
-  </section>
-
-</body>
-
-</html>

@@ -25,7 +25,7 @@
                                             <div class="pull-right hidden-phone">
                                                 <?= $this->Html->link('<i class="fa fa-close"></i>', '#', ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
                                                 <?= $this->Html->link('<i class="fa fa-check"></i>', '#', ['class' => 'btn btn-success btn-xs', 'escape' => false]); ?>
-                                                <?= $this->Html->link('<i class="fa fa-pencil"></i>', '#', ['class' => 'btn btn-primary btn-xs', 'escape' => false]); ?>
+                                                <?= $this->Html->link('<i class="fa fa-pencil"></i>', '/edit'.'/'.$ticket->id, ['class' => 'btn btn-primary btn-xs', 'escape' => false]); ?>
                                                 <?= $this->Html->link('<i class="fa fa-trash-o"></i>', ['controller' => 'Tickets','action' => 'delete', $ticket->id], ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
                                             </div>
 
