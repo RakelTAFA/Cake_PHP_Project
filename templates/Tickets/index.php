@@ -17,16 +17,16 @@
                                     ?>
                                     <li class="tooltips" title="">
                                         <div class="task-title">
-                                            <span class="task-title-sp"><?= $this->Html->link($ticket->title, ['action' => 'view', $ticket->slug]) ?></span>
+                                            <span class="task-title-sp"><?= $this->Html->link($ticket->title, ['action' => 'index', $ticket->slug]) ?></span>
                                             <span class="badge <?= ($ticket->level <= 4 ? 'bg-theme' : 'bg-warning') ?>">
                                         <?php
-                                        echo($this->Html->link($ticket->level,['action' => 'view', $ticket->slug]));
+                                        echo($this->Html->link($ticket->level,['action' => 'index', $ticket->slug]));
                                         ?></span>
                                             <div class="pull-right hidden-phone">
                                                 <?= $this->Html->link('<i class="fa fa-close"></i>', '#', ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
                                                 <?= $this->Html->link('<i class="fa fa-check"></i>', '#', ['class' => 'btn btn-success btn-xs', 'escape' => false]); ?>
                                                 <?= $this->Html->link('<i class="fa fa-pencil"></i>', '#', ['class' => 'btn btn-primary btn-xs', 'escape' => false]); ?>
-                                                <?= $this->Html->link('<i class="fa fa-trash-o"></i>', '#', ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
+                                                <?= $this->Html->link('<i class="fa fa-trash-o"></i>', ['controller' => 'Tickets','action' => 'delete', $ticket->id], ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
                                             </div>
 
                                         </div>

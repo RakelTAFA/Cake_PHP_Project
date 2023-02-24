@@ -10,24 +10,11 @@
                 <?= $_SESSION['user']['name']??"" ?>
             </h5>
             <li class="mt">
-                <?php
-                echo($this->Html->link(
-                    'Tableau de bord',[
-                    'controller'=>'Tickets','action' =>'index'
-                ],[
-                    'class' => 'index'
-                ]));
-                ?>
+                <?= $this->Html->link('<i class="fa fa-dashboard"></i>' . '<span>Tableau de bord</span>', '/', ['controller' => 'Tickets', 'action' => 'index','escape' => false]); ?>
             </li>
+
             <li class="mt">
-                <?php
-                echo($this->Html->link(
-                    'Les Tickets',[
-                    'controller'=>'Tickets','action' =>'listing'
-                ],[
-                    'class' => 'listing'
-                ]));
-                ?>
+                <?= $this->Html->link('<i class="fa fa-list"></i>' . '<span>Les tickets</span>','/listing', ['controller' => 'Tickets', 'action' => 'listing', 'escape' => false]); ?>
             </li>
         </ul>
     </div>

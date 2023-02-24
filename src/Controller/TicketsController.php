@@ -5,12 +5,12 @@ namespace App\Controller;
 class TicketsController extends AppController
 {
     public function index(){
-        $this->loadComponent('Paginator');
-        $tickets = $this->Paginator->paginate($this->Tickets->find());
+        $tickets = $this->Tickets->find('all')->limit(5)->order(['id' => 'DESC']);
         $this->set(compact('tickets'));
     }
     public function listing(){
-
+        $tickets = $this->Tickets->find('all');
+        $this->set(compact('tickets'));
     }
     public function edit(){
 
@@ -28,7 +28,7 @@ class TicketsController extends AppController
             if ($this->Tickets->save($ticket))
             {
                 $this->Flash->success('Tâche ajoutée !');
-                return $this->redirect(['action' => 'add']);
+                return $this->redirect(['action' => 'index']);
             }
             $this->Flash->error('Impossible d\'ajouter cette tâche !');
         }
@@ -36,7 +36,13 @@ class TicketsController extends AppController
         $this->set(compact('ticket'));
 
     }
-    public function delete(){
-
+    public function delete($id){
+        $ticket = $this->Tickets->get($id);
+        if ($this->Tickets->delete($ticket)) {
+            $this->Flash->success(__('The ticket has been deleted.'));
+        } else {
+            $this->Flash->error(__('The ticket could not be deleted. Please, try again.'));
+        }
+        return $this->redirect(['action' => 'index']);
     }
 }

@@ -45,7 +45,7 @@
 
                     // Urgency
                     echo("<div class='form-group'>");
-                    echo($this->Form->control('urgency',
+                    echo($this->Form->control('level',
                         ['class' => 'col-sm-2 col-sm-2 control-label',
                             'label' => "Niveau d'urgence"]));
                     /*

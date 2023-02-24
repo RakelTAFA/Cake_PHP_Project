@@ -1,104 +1,57 @@
-<?php
-$cakeDescription = 'Ticket List';
-?>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        <?= $cakeDescription ?>:
-    </title>
-    <?= $this->Html->meta('icon') ?>
-
-    <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-
-    <?= $this->Html->css(['style','/js/bootstrap/css/bootstrap.min','/js/font-awesome/css/font-awesome','/js/font-awesome/css/font-awesome.min']) ?>
-    <?= $this->Html->script(['common-scripts','bootstrap/js/bootstrap.min','jquery/jquery.min'])?>
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
-</head>
-
-<body>
-  <section id="container">
-      <?= $this->element("front/header");?>
-      <?= $this->element("front/nav_menu");?>
-
-    <!--main content start-->
-    <section id="main-content">
-      <section class="wrapper">
-        <h3><i class="fa fa-angle-right"></i> To-Do List</h3>
+<section id="main-content">
+    <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Tickets list</h3>
         <div class="row mt">
-          <div class="col-md-12">
-            <section class="task-panel tasks-widget">
-              <div class="panel-heading">
-                <div class="pull-left">
-                  <h5><i class="fa fa-tasks"></i> Liste des tâches a faire / faites</h5>
-                </div>
-                <br>
-              </div>
-              <div class="panel-body">
-                <div class="task-content">
-                  <ul class="task-list">
-                      <!--
-                      <?php
-                      /*
-                      $tickets = $db->read("tickets",["conditions"=>[
-                              "user_id"=>$_SESSION['user']['id'],
-                      ],
-                          "limit"=>10,
-                          "order"=>["id DESC"]
-                      ]);
-                      foreach ($tickets as $ticket) :
-                      */
-                        ?>
-                          <li class="tooltips" title="<?php/* $ticket['description'] */?>">
-                            <div class="task-title">
-                                <span class="task-title-sp <?php /*($ticket['done']?'done':'') ?>"><?= $ticket['title']*/ ?></span>
-                                <span class="badge <?php /*($ticket['level'] <= 4 ? 'bg-theme' : 'bg-warning') ?>"><?= $ticket['level'] */?></span>
-                                <div class="pull-right hidden-phone">
-                                    <?php
-                                    /*
-                                    if ($ticket['done']):
-                                    */
+            <div class="col-md-12">
+                <section class="task-panel tasks-widget">
+                    <div class="panel-heading">
+                        <div class="pull-left">
+                            <h5><i class="fa fa-tasks"></i> Liste des tickets</h5>
+                        </div>
+                        <br>
+                    </div>
+                    <div class="panel-body">
+                        <div class="task-content">
+                            <ul class="task-list">
+                                <?php foreach($tickets as $ticket) :
                                     ?>
-                                        <a href="#" class="btn btn-warning btn-xs"><i class=" fa fa-close"></i></a>
-                                    <?php
-                                    //else:
-                                    ?>
-                                        <a href="#" class="btn btn-success btn-xs"><i class=" fa fa-check"></i></a>
-                                    <?php
-                                    //endif;
-                                    ?>
-                                    <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>
-                                    <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></a>
-                                </div>
-                            </div>
-                          </li>
-                      <?php
-                      //endforeach;
-                      ?>
-                      -->
-                  </ul>
-                </div>
-                <div class=" add-task-row">
-                  <a class="btn btn-success btn-sm pull-left" href="form-edit">Ajouter un nouveau ticket</a>
-                </div>
-              </div>
-            </section>
-          </div>
-          <!-- /col-md-12-->
+                                    <li class="tooltips" title="">
+                                        <div class="task-title">
+                                            <span class="task-title-sp"><?= $this->Html->link($ticket->title, ['action' => 'index', $ticket->slug]) ?></span>
+                                            <span class="badge <?= ($ticket->level <= 4 ? 'bg-theme' : 'bg-warning') ?>">
+                                        <?php
+                                        echo($this->Html->link($ticket->level,['action' => 'index', $ticket->slug]));
+                                        ?></span>
+                                            <div class="pull-right hidden-phone">
+                                                <?= $this->Html->link('<i class="fa fa-close"></i>', '#', ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
+                                                <?= $this->Html->link('<i class="fa fa-check"></i>', '#', ['class' => 'btn btn-success btn-xs', 'escape' => false]); ?>
+                                                <?= $this->Html->link('<i class="fa fa-pencil"></i>', '#', ['class' => 'btn btn-primary btn-xs', 'escape' => false]); ?>
+                                                <?= $this->Html->link('<i class="fa fa-trash-o"></i>', ['controller' => 'Tickets','action' => 'delete', $ticket->id], ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
+                                            </div>
+
+                                        </div>
+                                    </li>
+                                <?php endforeach; ?>
+
+                            </ul>
+                        </div>
+                        <div class=" add-task-row">
+                            <?php
+                            echo($this->Html->link(
+                                'Ajouter un nouveau ticket',[
+                                'controller'=>'Tickets','action' =>'add'
+                            ],[
+                                'class' => 'btn btn-success btn-sm pull-left'
+                            ]));
+                            ?>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <!-- /col-md-12-->
         </div>
 
-      </section>
-      <!-- /wrapper -->
     </section>
-    <!--main content end-->
-      <?= $this->element("front/footer");?>
-
-  </section>
-
-</body>
-
-</html>
+    <!-- /wrapper -->
+</section>
+<!--main content end-->
