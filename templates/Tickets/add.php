@@ -13,67 +13,60 @@
               <div class="panel-body">
                 <div class="task-content">
 
-                    <?php
-                    /** @var Form $form */
-                    use Cake\Form\Form;
+                    <div class="form-group">
+                        <?= $this->Form->create()?>
+                        <?= $this->Form->label('Titre du ticket',null, [
+                            'class' => 'col-sm-2 col-sm-2 control-label',
+                            'for' => 'inputTitle'
+                        ]) ?>
+                        <div class="col-sm-10">
+                            <?= $this->Form->input('title', [
+                                'id' => 'inputTitle',
+                                'class' => 'form-control'
+                            ]) ?>
+                        </div>
+                    </div>
 
-                    echo($this->Form->create($ticket, [
-                        'class' => 'form-horizontal style-form'
-                    ]));
-
-                    // Title
-                    echo("<div class='form-group'>");
-                    echo($this->Form->control('title',
-                        ['class' => 'col-sm-2 col-sm-2 control-label',
-                            'label' => 'Titre du ticket']));
-                    echo("<div class='col-sm-10'>");
-                    //echo($this->Form->control('inputTitle', ['type' => 'text',
-                    //    'required' => 'true']));
-                    echo("</div>");
-                    echo("</div>");
-
-                    // Description
-                    echo("<div class='form-group'>");
-                    echo($this->Form->control('description',
-                        ['class' => 'col-sm-2 col-sm-2 control-label',
-                            'label' => 'Description complète du ticket']));
-                    echo("<div class='col-sm-10'>");
-                    //echo($this->Form->control('inputContent', ['type' => 'textarea',
-                    //    'required' => 'true']));
-                    echo("</div>");
-                    echo("</div>");
-
-                    // Urgency
-                    echo("<div class='form-group'>");
-                    echo($this->Form->control('level',
-                        ['class' => 'col-sm-2 col-sm-2 control-label',
-                            'label' => "Niveau d'urgence"]));
-                    /*
-                    echo("<div class='col-sm-10'>");
-                    echo("<select id='inputSelect' class='form-control' name='level'>");
-                    echo("<option value='0'>0</option>");
-                    echo("<option value='1'>1</option>");
-                    echo("<option value='2'>2</option>");
-                    echo("<option value='3'>3</option>");
-                    echo("<option value='4'>4</option>");
-                    echo("<option value='5'>5</option>");
-                    echo("<option value='6'>6</option>");
-                    echo("<option value='7'>7</option>");
-                    echo("<option value='8'>8</option>");
-                    echo("<option value='9'>9</option>");
-                    echo("<option value='10'>10</option>");
-                    echo("</select>");
-                    echo("</div>");
-                    echo("</div>");
-                    */
-
-                    // Button
-                    echo("<div class='pull-right'>");
-                    echo($this->Form->button('Enregistrer', ['type' => 'submit', 'class' => 'btn btn-primary']));
-                    echo("</div>");
-
-                    echo($this->Form->end());
-                    ?>
+                    <div class="form-group">
+                        <?= $this->Form->label('description', null,[
+                            'class' => 'col-sm-2 col-form-label',
+                            'for' => 'inputContent'
+                        ]) ?>
+                        <div class="col-sm-10">
+                            <?= $this->Form->textarea('description', [
+                                'id' => 'inputContent',
+                                'class' => 'form-control'
+                            ]) ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <?= $this->Form->label('level', null,[
+                            'class' => 'col-sm-2 col-form-label',
+                            'for' => 'inputSelect'
+                        ]) ?>
+                        <div class="col-sm-10">
+                            <?= $this->Form->select('level', [
+                                '0' => '0',
+                                '1' => '1',
+                                '2' => '2',
+                                '3' => '3',
+                                '4' => '4',
+                                '5' => '5',
+                                '6' => '6',
+                                '7' => '7',
+                                '8' => '8',
+                                '9' => '9',
+                                '10' => '10'
+                            ], [
+                                'id' => 'inputSelect',
+                                'class' => 'form-control'
+                            ]) ?>
+                        </div>
+                    </div>
+                    <div class='pull-right'>
+                    <?=($this->Form->button('Enregistrer', ['type' => 'submit', 'class' => 'btn btn-primary']));?>
+                    </div>
+                    <?=$this->Form->end();?>
                 </div>
               </div>
             </section>
