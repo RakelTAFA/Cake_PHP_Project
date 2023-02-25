@@ -22,9 +22,14 @@
                                         <?php
                                         echo($this->Html->link($ticket->level,['action' => 'index', $ticket->slug]));
                                         ?></span>
+                                            <?php if ($ticket->done) { ?>
+                                                <i class="fa fa-check btn btn-success btn-xs"></i>
+                                            <?php } else { ?>
+                                                <i class="fa fa-close btn btn-danger btn-xs"></i>
+                                            <?php } ?>
                                             <div class="pull-right hidden-phone">
-                                                <?= $this->Html->link('<i class="fa fa-close"></i>', '#', ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
-                                                <?= $this->Html->link('<i class="fa fa-check"></i>', '#', ['class' => 'btn btn-success btn-xs', 'escape' => false]); ?>
+                                                <?= $this->Html->link('<i class="fa fa-close"></i>', ['controller' => 'Tickets','action' => 'undone', $ticket->id], ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
+                                                <?= $this->Html->link('<i class="fa fa-check"></i>', ['controller' => 'Tickets','action' => 'done', $ticket->id], ['class' => 'btn btn-success btn-xs', 'escape' => false]); ?>
                                                 <?= $this->Html->link('<i class="fa fa-pencil"></i>', '/edit'.'/'.$ticket->id, ['class' => 'btn btn-primary btn-xs', 'escape' => false]); ?>
                                                 <?= $this->Html->link('<i class="fa fa-trash-o"></i>', ['controller' => 'Tickets','action' => 'delete', $ticket->id], ['class' => 'btn btn-danger btn-xs', 'escape' => false]); ?>
                                             </div>

@@ -72,4 +72,32 @@ class TicketsController extends AppController
         }
         return $this->redirect(['action' => 'index']);
     }
+
+    public function done($id = null)
+    {
+        $ticket = $this->Tickets->get($id);
+        $ticket->done = true;
+
+        if ($this->Tickets->save($ticket)) {
+            $this->Flash->success(__('The ticket has been marked as done.'));
+        } else {
+            $this->Flash->error(__('The ticket could not be marked as done. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    public function undone($id = null)
+    {
+        $ticket = $this->Tickets->get($id);
+        $ticket->done = false;
+
+        if ($this->Tickets->save($ticket)) {
+            $this->Flash->success(__('The ticket has been marked as done.'));
+        } else {
+            $this->Flash->error(__('The ticket could not be marked as done. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
 }

@@ -15,7 +15,7 @@ user_id INT NOT NULL default 0,
 title varchar(255) NOT NULL default '',
 description varchar(255) NOT NULL default '',
 level int(1) NOT NULL default 0,
-done integer NOT NULL default 0,
+done boolean NOT NULL default false,
 CONSTRAINT PK_tickets PRIMARY KEY (id)
 );
 
