@@ -14,8 +14,14 @@ class TicketsController extends AppController
     }
     public function edit($id)
     {
-        // Find the ticket with the given ID
-        $ticket = $this->Tickets->get($id);
+        // Load the Tickets table
+        $this->loadModel('Tickets');
+
+        // Get the ticket with ID 1
+        $ticket = $this->Tickets->find()
+            ->where(['id' => $id])
+            ->firstOrFail();
+
 
         // Check if the request is a POST request
         if ($this->request->is(['post', 'put'])) {

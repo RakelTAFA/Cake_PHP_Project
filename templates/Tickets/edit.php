@@ -23,7 +23,7 @@
                                     <?= $this->Form->input('title', [
                                         'id' => 'inputTitle',
                                         'class' => 'form-control',
-                                        'value' => $ticket['Ticket']['title']
+                                        'value' => $ticket->title
                                     ]) ?>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                                     <?= $this->Form->textarea('description', [
                                         'id' => 'inputContent',
                                         'class' => 'form-control',
-                                        'value' => $ticket['Ticket']['description']
+                                        'value' => $ticket->description
                                     ]) ?>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                                     ], [
                                         'id' => 'inputSelect',
                                         'class' => 'form-control',
-                                        'value' => $ticket['Ticket']['level']
+                                        'value' => $ticket->level
                                     ]) ?>
                                 </div>
                             </div>
